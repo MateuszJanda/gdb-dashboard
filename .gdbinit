@@ -1651,16 +1651,48 @@ end
 
 # Better GDB defaults ----------------------------------------------------------
 
-set history save
+set history filename ~/.gdb_history
+set history save on
+set history size 100000
+
+# Assembler intel syntax
+set disassembly-flavor intel
+
+# Umożliwia ustawienie breakpointa w tym pliku
+set breakpoint pending on
+
 set verbose off
 set print pretty on
 set print array off
 set print array-indexes on
 set python print-stack full
 
+# Nie pyta o czy na pewno chcemy zamknąć gdb
+define hook-quit
+    set confirm off
+end
+
+# Podgląd pamięci stosu
+define stackmem
+    x/x $arg0 - 0
+    x/x $arg0 - 4
+    x/x $arg0 - 8
+    x/x $arg0 - 12
+    x/x $arg0 - 16
+end
+
+# Prosty alias
+alias ddd = disassemble
+
+# Domyślny breakpoint na main
+b main
+
+
 # Start ------------------------------------------------------------------------
 
 python Dashboard.start()
+
+dashboard -layout registers assembly
 
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015-2019 Andrea Cardaci <cyrus.and@gmail.com>
