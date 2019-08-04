@@ -1658,7 +1658,8 @@ set history size 100000
 # Assembler intel syntax
 set disassembly-flavor intel
 
-# Umożliwia ustawienie breakpointa w tym pliku
+# Umożliwia wcześniejsze ustawienie breakpointa (np. w pliku .gdbinit), zanim
+# program zostanie uruchomiony
 set breakpoint pending on
 
 set verbose off
