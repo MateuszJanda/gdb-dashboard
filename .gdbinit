@@ -1673,15 +1673,6 @@ define hook-quit
     set confirm off
 end
 
-# Podgląd pamięci stosu
-define stackmem
-    x/x $arg0 - 0
-    x/x $arg0 - 4
-    x/x $arg0 - 8
-    x/x $arg0 - 12
-    x/x $arg0 - 16
-end
-
 # Prosty alias
 alias ddd = disassemble
 
