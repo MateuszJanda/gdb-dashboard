@@ -9,11 +9,11 @@ ITEM_SIZE = 4  # for 32 bit architecture
 
 class ExamineStack32(gdb.Command):
     def __init__(self):
-        """This registers our class as 'examine_stack_32'"""
+        '''This registers our class as "examine_stack_32"'''
         super(ExamineStack32, self).__init__("examine_stack_32", gdb.COMMAND_DATA)
 
     def invoke(self, num_of_items, from_tty):
-        # When we call "command" from gdb, this method is called
+        '''When we call "examine_stack_32" from gdb, this method is call.'''
         for i in range(0, int(num_of_items) * ITEM_SIZE, ITEM_SIZE):
             gdb.execute('printf "Examine $esp+' + str(i) + ': 0x%0x\\n", $esp+' + str(i))
             try:
